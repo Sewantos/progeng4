@@ -11,7 +11,8 @@ router = APIRouter(
 
 
 @router.post("/", response_model=schemas.Student)
-def create_student(student: schemas.StudentCreate, db: Session = Depends(get_db)):
+def create_student(student: schemas.StudentCreate, 
+                   db: Session = Depends(get_db)):
     """Создает нового студента."""
     return crud.create_student(db, student)
 
@@ -35,6 +36,7 @@ def delete_student(student_id: int, db: Session = Depends(get_db)):
 
 
 @router.post("/transfer", response_model=schemas.Student)
-def transfer_student(transfer: schemas.Transfer, db: Session = Depends(get_db)):
+def transfer_student(transfer: schemas.Transfer, 
+                     db: Session = Depends(get_db)):
     """Переводит студента из одной группы в другую."""
     return crud.transfer_student(db, transfer)

@@ -36,14 +36,16 @@ def delete_group(group_id: int, db: Session = Depends(get_db)):
 
 @router.post("/{group_id}/students/{student_id}", 
              response_model=schemas.Student)
-def add_student_to_group(group_id: int, student_id: int, db: Session = Depends(get_db)):
+def add_student_to_group(group_id: int, student_id: int, 
+                         db: Session = Depends(get_db)):
     """Добавляет студента в группу."""
     return crud.add_student_to_group(db, group_id, student_id)
 
 
 @router.delete("/{group_id}/students/{student_id}", 
                response_model=schemas.Student)
-def remove_student_from_group(group_id: int, student_id: int, db: Session = Depends(get_db)):
+def remove_student_from_group(group_id: int, student_id: int,
+                              db: Session = Depends(get_db)):
     """Удаляет студента из группы."""
     return crud.remove_student_from_group(db, group_id, student_id)
 
